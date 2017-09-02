@@ -30,9 +30,13 @@
     </script>   
 
     <script type="text/javascript">          
-        <% if (cartItems.length > 0) {%>
+        <% if (cartItems.length > 0) {%>            
             var cartItems = <%- JSON.stringify(cartItems) %>;
-            //TODO - Dynamic Ads, Exercise 5, implement InitiateCheckout
+            var content_ids = cart.getCartItemIdsAsList(cartItems);
+            var value = cart.getTotalPrice(cartItems);
+            var currency = cartItems[0].product.currency;
+            
+            //TODO - Dynamic Ads, Exercise 5, implement firing of InitiateCheckout
 
         <% } %>
     </script> 

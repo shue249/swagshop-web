@@ -9,7 +9,11 @@
     <script type="text/javascript">          
         <% if (success && purchasedItems.length > 0) {%>
             var purchasedItems = <%- JSON.stringify(purchasedItems) %>;
-            //TODO - Dynamic Ads, Exercise 4, implement Purchase
+            var content_ids = cart.getCartItemIdsAsList(purchasedItems);
+            var value = cart.getTotalPrice(purchasedItems);
+            var currency = purchasedItems[0].product.currency;
+
+            //TODO - Dynamic Ads, Exercise 4c, implement Purchase
 
         <% } %>
     </script>     

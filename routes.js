@@ -13,7 +13,7 @@ var products = [
     ];
 var productsById = [];
 for (var i = 0; i < products.length; i++) {
-	productsById[products[i].id] = products[i];
+    productsById[products[i].id] = products[i];
 }
 var cartItems = [];
 
@@ -22,81 +22,81 @@ var cartItems = [];
 ===========*/
 
 function getCartItem(product) {
- 	var foundCartItems = cartItems.filter(
-    	function(cartItem){ return cartItem.product.id === product.id }
-  	);
-  	return (foundCartItems.length > 0) ? foundCartItems[0] : null;
+    var foundCartItems = cartItems.filter(
+        function(cartItem){ return cartItem.product.id === product.id }
+    );
+    return (foundCartItems.length > 0) ? foundCartItems[0] : null;
 }
 
 function removeCartItem(product) {
-	for (var i = 0; i < cartItems.length; i++) {
-		if (cartItems[i].product.id === product.id) {
-			cartItems.splice(i, 1);
-			break;
-		}
-	}
+    for (var i = 0; i < cartItems.length; i++) {
+        if (cartItems[i].product.id === product.id) {
+            cartItems.splice(i, 1);
+            break;
+        }
+    }
 }
 
 /*======
  Routes
 =======*/
 router.get('/', function(req, res) {
-	res.render('index', {products, cartItems, loginUser});
+    res.render('index', {products, cartItems, loginUser});
 });
 
 router.get('/login', function(req, res) {
   var originUrl = req.header('Referer') || '/';
-	loginUser = { email: 'johnsmith@example.com', firstname: 'John', lastname: 'Smith', phone: '010-123456789' };
-	res.redirect(originUrl);
+    loginUser = { email: 'johnsmith@example.com', firstname: 'John', lastname: 'Smith', phone: '010-123456789' };
+    res.redirect(originUrl);
 });
 
 router.get('/logout', function(req, res) {
-	var originUrl = req.header('Referer') || '/';
-	loginUser = null;
-	res.redirect(originUrl);
+    var originUrl = req.header('Referer') || '/';
+    loginUser = null;
+    res.redirect(originUrl);
 });
 
 router.get('/contactus', function(req, res) {
-	res.render('contactus', {loginUser});
+    res.render('contactus', {loginUser});
 });
 
 router.get('/shipping', function(req, res) {
-	res.render('shipping', {loginUser});
+    res.render('shipping', {loginUser});
 });
 
 router.get('/product', function(req, res) {
-	var product = productsById[req.query.id];
-	res.render('product', {product, cartItems, loginUser});
+    var product = productsById[req.query.id];
+    res.render('product', {product, cartItems, loginUser});
 });
 
 router.get('/addtocart', function(req, res) {
-	var product = productsById[req.query.id];
-	var cartItem = getCartItem(product);
-	if (cartItem) {
-		cartItem.qty = cartItem.qty + 1;
-		cartItem.itemTotal = parseFloat(cartItem.qty) * parseFloat(cartItem.product.price);
-	} else {
-		cartItems.push({product: product, qty: 1, itemTotal: product.price});
-	}
-	res.send({success: true, cartItems});
+    var product = productsById[req.query.id];
+    var cartItem = getCartItem(product);
+    if (cartItem) {
+        cartItem.qty = cartItem.qty + 1;
+        cartItem.itemTotal = parseFloat(cartItem.qty) * parseFloat(cartItem.product.price);
+    } else {
+        cartItems.push({product: product, qty: 1, itemTotal: product.price});
+    }
+    res.send({success: true, cartItems});
 });
 
 router.get('/remove', function(req, res) {
-	var product = productsById[req.query.id];
-	removeCartItem(product);
-	res.send({success: true, cartItems});
+    var product = productsById[req.query.id];
+    removeCartItem(product);
+    res.send({success: true, cartItems});
 });
 
 router.get('/checkout', function(req, res) {
-	res.render('checkout', {cartItems, loginUser});
+    res.render('checkout', {cartItems, loginUser});
 });
 
 router.get('/purchase', function(req, res) {
-	console.log('Successful purchase for');
-	console.log(cartItems);
-	var purchasedItems = cartItems;
-	cartItems = [];
-	res.render('success', {success: true, purchasedItems, loginUser});
+    console.log('Successful purchase for');
+    console.log(cartItems);
+    var purchasedItems = cartItems;
+    cartItems = [];
+    res.render('success', {success: true, purchasedItems, loginUser});
 });
 
 router.get('/leadgen', function(req, res) {

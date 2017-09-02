@@ -1,7 +1,11 @@
 var cart = {
     // adds product to cart
     'add': function(product, onSuccess) {
-        //TODO - Dynamic Ads, Exercise 4, implement AddToCart 
+        var content_ids = [product.id];
+        var value = product.price;
+        var currency = product.currency;
+
+        //TODO - Dynamic Ads, Exercise 4b, implement AddToCart 
 
         $.ajax({
             url: '/addtocart?id=' + product.id,

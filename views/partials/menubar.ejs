@@ -24,11 +24,11 @@
                     <a href="#">FAQ</a>
                 </li>
                 <li>
-      					<% if (loginUser) { %>
-      						<a href="/logout">Logout</a>
-      					<% } else { %>
-                	<a href="/login">Login</a>
-                <% } %>
+					<% if (loginUser) { %>
+						<a href="/logout">Logout</a>
+					<% } else { %>                
+                		<a href="/login">Login</a>
+                	<% } %>
                 </li>
             </ul>
         </div>
@@ -39,5 +39,5 @@
 <% if (loginUser) { %>
 	<div id="div-login-user" class="thumbnail"	>
 	    Welcome, <%= loginUser.firstname %> <%= loginUser.lastname %>, <%= loginUser.email %>
-	</div>
-<% }  %>
+	</div>    
+<% }  %> 

@@ -21,26 +21,15 @@
 <script>
 var loginUser = {};
 <% if (loginUser) { %>
-<!-- TODO - Signals, Exercise 2, implement Advanced Matching -->
-
+	loginUser = {
+		em: '<%= loginUser.email %>',
+		fn: '<%= loginUser.firstname %>',
+		ln: '<%= loginUser.lastname %>',
+		ph: '<%= loginUser.phone %>'
+	};
 <% } %>
 </script>
 
-<!--TODO - Signals, Exercise 2, implement Pixel base code -->
-<!-- Facebook Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '305925216454795', {
-em: 'insert_email_variable,'
-});
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=305925216454795&ev=PageView&noscript=1"
-/></noscript>
-<!-- DO NOT MODIFY -->
-<!-- End Facebook Pixel Code -->
+<!--TODO - Signals, Exercise 1a, implement Pixel base code -->
+
+<!--TODO - Signals, Exercise 1b, implement Advanced Matching -->
