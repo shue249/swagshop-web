@@ -1,4 +1,4 @@
-# swagshop-web-answer
+# swagshopweb
 This is the practice for the sample website for firing Facebook pixels
 
 ## Signals:
