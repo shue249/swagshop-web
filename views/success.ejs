@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/header %>
+
+    <script type="text/javascript" src="/js/cart.js"></script>
+
+    <script type="text/javascript">          
+        <% if (success && purchasedItems.length > 0) {%>
+            var purchasedItems = <%- JSON.stringify(purchasedItems) %>;
+            //TODO - Dynamic Ads, Exercise 4, implement Purchase
+
+        <% } %>
+    </script>     
+</head>
+
+<body>
+    <% include partials/menubar.ejs %>  
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="text-center">
+            <img src="images/successkid.png" class="center-block img-responsive img-circle"/>
+            <br>
+            <h1> Your order has been placed successful! </h1>
+            <br>
+            <a href="/" class="btn btn-lg btn-info">Return to Swag Store</a>
+        </div>
+        <hr>
+
+        <% include partials/footer.ejs %>
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>
